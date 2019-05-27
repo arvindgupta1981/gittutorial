@@ -1,9 +1,35 @@
-What is Version Control:- Allow to integrate team work at one place Keep
+What is Version Control:- 
+-----------------------------
+Allow to integrate team work at one place Keep
 histories of all the work and allow track changes Each versions capture
 a snapshot of the files at a certain point of time
 
-what is Localized and centralized version control systems:-
+GIt Vs SVN
+---------------
+SVN has one central repository, but GIT has multiple repositories, one central repository but each developer has their own repository.
+The benefits of splitting it up into multiple repositories is that there is no longer one single point of failure. With SVN if the central repository goes down or the code has broken the build then no other developers can commit there code until the repository is fixed.
+With GIT as each developer has the own repository it doesn't matter if the master repository is broke they can continue to commit code locally
 
+Workflow Git
+-------------
+The workflow that you use when developing using GIT is the following:
+When working on a project you will clone the master repository, this means that you are making a copy of the code at this point in time. This creates a local GIT repository on your local machine where you can continue working on your new feature.
+You can use your local repository exactly the same as you would in SVN create new branches, tags, and continue committing code locally during development.
+
+Types of Working Tree
+----------------------
+Master(trunk) - created at origin(central) & clone at local repositories, contains most stable code for release
+Develop branches- ceated at origin from master & sit both at origin and at local repositories
+Feature branches -create at local repositories from develop branches and sit at only local repositories,  merged between local repositories and back to develop branches, follow naming conventition like features -<version no>-<feature-name>  
+Hotfixes branches - created at origin repositories from master and clone localy and merged back into release branch and develop repositories( if required).
+Release branches - created at origin repositories from development branch and test properly, fix defect or code issue and merged back to master for a release.
+Tag - Tag the code when we make any change in trunk for release, to fix the defect in previously released code version.
+
+Each developer has it's own feature branch and commit the code locally and push into development branch when required.
+
+
+what is Localized and centralized version control systems:-
+-------------------------------------------
 Localized - keep histories of changes of the files at local system for a
 particular user
 
