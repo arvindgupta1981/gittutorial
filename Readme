@@ -1,0 +1,341 @@
+What is Version Control:- Allow to integrate team work at one place Keep
+histories of all the work and allow track changes Each versions capture
+a snapshot of the files at a certain point of time
+
+what is Localized and centralized version control systems:-
+
+Localized - keep histories of changes of the files at local system for a
+particular user
+
+Centarlize - Keep versions of files for a team
+
+What is distributed Version Control System:- Every user in a team has a
+complete local copy of a repository on his system. Clone:- A user
+copying the whole repository at his local system. This copying process
+is called cloning of repository.
+
+Every clone contains the full histories of the collection of the files
+and has the same functionality as the original repository. Every clone
+repository can push their changes/versions at centralized repository and
+can pull the changes.
+
+What is Git
+-----------
+
+Git is a distributed Version control System.
+
+What is Working tree
+--------------------
+
+A collection of the files in LOCAL repository
+
+A file can be in below state in working tree
+
+Untracked - never commited and never staged Committed - committed and
+not staged staged - To be included in next commited dirty/modified - the
+file has been changed but not staged.
+
+After doing changes in the working tree, the user can add these changes
+to the Git repository or revert these changes
+
+Adding to a Git repository via staging/index and committing
+-----------------------------------------------------------
+
+How to commit changes in centralized git repository - two steps 1.- add
+the selected changes to the staging area (also known as index) via the
+git add command - you can modify and stage them again until you are
+satisfied with your changes 2- commit the staged changes into the Git
+repository via the git commit command
+
+Egit for eclipse - https://www.vogella.com/tutorials/EclipseGit/article.html
+============================================================================
+
+Git support for Eclipse
+-----------------------
+
+Eclipse support below git tasks staging commit merge rebase pull push It
+is good practice to place your Git repositories outside the Eclipse
+workspace. By default, Eclipse Git uses the git folder in the users home
+directory to clone new repositories
+
+Eclipse Update Site:- http://download.eclipse.org/egit/updates select
+all options
+
+Ensure user and email is configured for Git
+-------------------------------------------
+
+Window -\> Preferences -\> Team -\> Git -\> configuration -\> --\> user
+setting tab -\> Add Entry Add Keys user.email user.name
+
+Configure Git to rebase during pull operations
+----------------------------------------------
+
+To use rebase during the pull operation set the pull.rebase parameter to
+true. It avoids merge commits if you pull from a remote repository and
+have divergent changes and instead rebases your local branch on the
+remote branch it tracks.
+
+Window -\> Preferences -\> Team -\> Git -\> configuration -\> --\> user
+setting tab -\> Add Entry Add Keys Key: pull.rebase value: true
+
+Configuring the proxy settings
+------------------------------
+
+If you are using a proxy server, you can configure it via Windows
+Preferences General Network Connection.
+
+Working with a local Git repository in Eclipse
+----------------------------------------------
+
+1.  Create a new Git repository via Eclipse
+
+2.  1 Window -\> Show View -\> Other…​ -\> Other…​ -\> Git -\> Git
+    Repositories 1.2 Create a new repository from Git+ icon
+
+This opens a dialog which allows you to specify the directory for the
+new Git repository. Select a new directory outside of your workspace. By
+convention, this directory is a subdirectory in the git folder of the
+users home directory.
+
+2. Create .gitignore file
+-------------------------
+
+2.1 You have to do this step outside of the Eclipse IDE, either via the
+command line or via your system project explorer. Create a .gitignore
+file in the top-level folder of your Git repository. It should contain
+the bin/target folder.
+
+3. Creating an Eclipse project - as we do
+-----------------------------------------
+
+4. Put project under version control
+------------------------------------
+
+4.1 Right-click on your project, select Team -\> Share Project -\> Git
+-\> Next. 4.2 Select the latest created Git repository 4.3 Check the
+working tree - it should point to correct version where you have to work
+like correct branch or trunk/master 4.4 You can see a directory
+structure. You can find two root directories one contains the files of
+working tree with your project name and other is .get that contains the
+Git repostory.
+
+5 .Using the Git Staging view for the initial commit
+----------------------------------------------------
+
+5.1 Open Window -\>Show -\>View -\>Other…​ -\>Git -\>Git -\>Staging 5.2
+You can drag the files into staged area from unstages area and commit
+the changes into staged repository.
+
+6 Doing a change and committing it
+----------------------------------
+
+as described above 5.2
+
+7. Eclipse Clone an existing repository
+---------------------------------------
+
+7.1 Select File -\>Import…​-\>Git -\>Projects from Git 7.2 Clone UrI 7.3
+Enter the locations and select protocol Git 7.4 Select a branch or
+Master 7.5 Configure the local directory to hold the files and Git
+repository has been cloned 7.6 Import the project using eclipse import
+wizard
+
+8. Import projects from an existing repository (Local repo)
+-----------------------------------------------------------
+
+8.1 Select File -\>Import…​-\>Git -\>Projects from Git 8.2 Existing
+Local Repository 8.3 Select the repository
+
+9. Using interactive rebase in Eclipse -
+----------------------------------------
+
+Rebase is one of two Git utilities that specializes in integrating
+changes from one branch onto another. The other change integration
+utility is git merge . Merge is always a forward moving change record.
+Alternatively, rebase has powerful history rewriting features
+
+Git allows to adjust the local commit history via the interactive rebase
+functionality. This feature include:- Changes the orders of commit
+Combing the commits with their commit messages Removing and
+Adjustmentsthe commits
+
+9.1 Changes a commit message (reword) 9.1.1 Right Click on history view
+Select Modify -\> reword 9.1.2 Write new message.
+
+9.2 Squash the commits 9.2.1 Open History View 9.2.2 Select commits
+9.2.3 R-Click -\> Modify -\> Squash
+
+10. Performing a full interactive rebase via Eclipse
+----------------------------------------------------
+
+10.1 To start the full interactive rebase open the History view and
+click Rebase Interactive Rebase Actions: pick :- includes the selected
+commit, moving pick entries enables reordering of commits skip :-
+removes a commit edit :- amends the commit squash:- combines the changes
+of the commit with the previous commit and combines their commit
+messages fixup :- squashes the changes of a commit into the previous
+commit discarding the squashed commit’s message reword :- similar to
+pick but allows modifying the commit message
+
+11 Default clone location
+-------------------------
+
+Windows Preferences Team Git entry in the Default Repository
+
+12 Configuring the toolbar and the menu for Git usage
+-----------------------------------------------------
+
+Window Perspective Customize perspective
+
+13 Using the Git Staging view
+-----------------------------
+
+The Git Staging view allows staging and committing as well as reverting
+changes.
+
+14 File state in Package Explorer
+---------------------------------
+
+tracked - File is committed to the Git repository and has not changed.
+untracked -File is neither staged nor committed. ignored - File is
+flagged to be ignored by Git operations. dirty - File has changed since
+the last commit. staged - Changes in the file will be included in the
+next commit. partially-staged - The resource has changes which are added
+to the index and additional unstaged changes in the working tree added -
+Staged but not yet committed, i.e. snapshot of this file has been stored
+in the git database. This status is the same as the staged status, but
+the file wasn’t under Git version control before. removed - The resource
+is staged for removal from the Git repository. conflict - A merge
+conflict exists for the file.
+
+15 Showing details of a commit
+------------------------------
+
+If you want to see more details about a commit, right-click it and
+select the Open in Commit Viewer entry.
+
+16 Purpose of the history view - Window Show View Other…​ Team History
+----------------------------------------------------------------------
+
+The History view allows you to analyze the history of your Git
+repository and to see to which commits the branches and tags points.
+This view displays author, date, commit message and the modified files
+of a commits. You can copare two files You can filter branches in
+history view
+
+16.1 - How ca we flter resource in History View :- We have many icon
+buttons in history view top status bar
+
+Icon and their meanings from last right to left Two Join down arrow -
+show only those commits which are reachable from the current branch.
+Hide all commits on other topic branches Two Join Folders - see only
+those commits which changed the selected resource (file, project,
+subfolder) or it’s children. E.g. display only those commits which
+touched the selected java file. The current selection is shown in the
+top right corner of the History view. Two right arrao with closed folder
+- see only those commits which changed anything in the parent folder of
+the selected resource (file, project, subfolder) or it’s children. E.g.
+display only those commits which changed the same package as the
+selected java source. Two right arrao with open folder - see only those
+commits which changed anything in the same project as the selected
+resource or it’s children. Used when you are working in a repository
+which contains multiple projects. Down Cylinder - Show all changes no
+filter apply
+
+The above all use The options b., c. and d. are tied to the currently
+selected resource.
+
+Maginfier lens - Open Git Search dialog box
+
+17 Commit Viewer
+----------------
+
+17.1 Git repositories view or Navigate Eclipse menu --\> Open Git Commit
+17.2 Enter branch tag or commit 17.3 If you open a commit you can create
+a tag or branch from it. You can also revert it, cherry pick it or check
+it out. You can also reveal it in the history view.
+
+18 Performing Git Operations in Eclipse
+---------------------------------------
+
+You can use the Git Repositories view to pull, push and fetch to remote
+repositories. Right click on your repository and select the appropriated
+operation.
+
+19 Basic team operations
+------------------------
+
+R-click on project --\> Team Team Add to index, to add the selected
+resource(s) to the Git index Team Commit, to open the commit dialog to
+create a new commit Team Create Patch…​, to create a patch Team Apply
+Patch…​, to apply a patch to your file system Team Ignore, to add a file
+to the .gitignore file Team Show in History, to display the history of
+the selected resources(s)
+
+20 Creating and switching branches in Eclipse
+---------------------------------------------
+
+20.1 Right-click your project and select Team Branch to create new
+branches or to switch between existing branches. 20.2 You can also
+switch branches in the History view or the Git repositories view
+
+21 Starting a merge operation in Eclipse
+----------------------------------------
+
+Eclipse supports merging of branches to add the changes committed on one
+branch into another branch. Team -\>Merge
+
+22 Rebasing a branch onto another branch
+----------------------------------------
+
+The Git Repositories view allows you to rebase your currently checkout
+branch onto another branch. 22.1 Repository View -\>Right-click on a
+repository node and select Rebase -\> Select the branch onto which we
+want to rebase 22.2 Resolve rebase conflicts if they occur. After
+resolving them, select Rebase -\> Continue or use Rebase -\> Skip. 22.3
+Rollback rebase Rebase --\> Abort.
+
+23 Solving conflicts created by merge, rebase or other operations
+-----------------------------------------------------------------
+
+Eclipse highlights the affected files in the Package Explorer and
+Project Explorer view. 23.1 Select Team -\>Merge Tool.
+
+24 Git reset and Git reflog
+---------------------------
+
+24.1 - Open the History View 24.2 R-click on certain commit 24.3 Choose
+Reset to reset your current branch to a commit
+
+25 Finding "invisible" commits with the Reflog view
+---------------------------------------------------
+
+Commits are not visible in the Git history if they can’t be reached from
+a branch or tag. This might happen during a reset, commit amend or
+rebase operation. By default, such invisible commits are removed after
+two weeks by the Git system
+
+26 Selecting individual commits via git cherry-pick
+---------------------------------------------------
+
+In the History view, you can cherry-pick a commit via the context menu.
+Cherry-pick allows to move selected changes describes by a commit to
+another branch. You can also use it in combination with a Git reset to
+perform a simplified interactive rebase.
+
+Lets assume the following situation, in which you would like to remove
+the "Bad commit" from the history described by the master branch.
+
+27 See Git information line by line (aka git blame)
+---------------------------------------------------
+
+Eclipse allows to display the information which commit and person change
+a line. To enable this, right-click on your file and select Team Show
+Revision Information. Afterwards, you can place the mouse on the left
+side of the editor. A popup dialog shows the commit information and the
+change applied by the shown commit.
+
+28 Creating patches
+-------------------
+
+Project -\> Team -\> create patches
